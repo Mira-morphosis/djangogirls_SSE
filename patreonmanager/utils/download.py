@@ -38,7 +38,7 @@ def gen_monthly_report_links(session):
     Generate download links to the current sessions's monthly CSV reports.
     """
     logging.info("Opening patron manager page...")
-    response = session.get(BASE_URL + "/manageRewards")
+    response = session.get("https://www.patreon.com/manageRewards")
     assert response.status_code == 200
     logging.info("Done.")
 

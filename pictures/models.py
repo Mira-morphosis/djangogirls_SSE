@@ -6,8 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 class EventPictureManager(models.Manager):
     def random_cover(self):
-        queryset = self.get_queryset()
-        return random.choice(queryset.filter(kind=StockPicture.COVER))
+        pictures = list(self.get_queryset().filter(kind=StockPicture.COVER))
+        if not pictures:
+            return None
+        return random.choice(pictures)
 
     def random_background(self):
         queryset = self.get_queryset()
